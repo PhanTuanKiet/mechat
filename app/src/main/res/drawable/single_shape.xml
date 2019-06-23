@@ -1,0 +1,8 @@
+<shape
+    android:shape="rectangle"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#2771AB" />
+    <corners android:radius="@dimen/chat_item_radius" />
+    <size android:height="50dp"
+        android:width="150dp" />
+</shape>
