@@ -21,20 +21,14 @@ class Adapter(val itemList: ArrayList<String>,val itemAmount: Int): RecyclerView
        return itemList.size
     }
 
-    override fun getItemViewType(position: Int): Int {
-
-    }
-
     override fun onBindViewHolder(p0: ItemListViewHolder, p1: Int) {
         return p0.bindItems(itemList[p1],itemAmount)
     }
 
-
-
     class ItemListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        fun bindItems(item : String,amount: Int){
-            itemView.tv_chat_content.text = item.toString()
+        fun bindItems(item : String, amount: Int){
+            itemView.tv_chat_content.text = item
             if (amount == 1){
                 itemView.tv_chat_content.background = itemView.context.getDrawable(R.drawable.single_shape)
             }
