@@ -1,7 +1,7 @@
 package com.tuankiet.mechat
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,11 +19,11 @@ class UserFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-
-        inflater.inflate(R.layout.fragment_user, container, false)
-        fab.setOnClickListener {
-        }
+        return inflater.inflate(R.layout.fragment_user, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fab.setOnClickListener {  }
+    }
 }

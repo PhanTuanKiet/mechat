@@ -1,6 +1,6 @@
 package com.tuankiet.mechat
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
@@ -14,5 +14,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         realm = Realm.getDefaultInstance()
+
+        val fragment = UserFragment()
+
+        val ft = supportFragmentManager.beginTransaction()
+        ft.add(fragmentContainer.id, fragment, "user")
+        ft.commit()
     }
 }
