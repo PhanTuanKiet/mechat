@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.main_message_layout.view.*
 
 class MainAdapter (val itemList: ArrayList<Conversation>): BaseAdapter() {
 
-    override fun createViewHolderInstance(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun createViewHolderInstance(viewGroup: ViewGroup, viewType: Int): BaseViewHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.main_message_layout, viewGroup,false)
         return ItemListViewHolder(v)
     }
@@ -24,12 +24,15 @@ class MainAdapter (val itemList: ArrayList<Conversation>): BaseAdapter() {
         return holder.bindItems(itemList[p1])
     }
 
-    class ItemListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-
-        fun bindItems(item : Conversation){
-            itemView.tvDatetime.text = item.date
-            val conversationAdapter = ConversationAdapter(item.messages)
-            itemView.rvConversations.adapter = conversationAdapter
+    class ItemListViewHolder(itemView: View): BaseViewHolder(itemView) {
+        override fun onBindData(item: Any) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
+
+//        fun bindItems(item : Conversation){
+//            itemView.tvDatetime.text = item.date
+//            val conversationAdapter = ConversationAdapter(item.messages)
+//            itemView.rvConversations.adapter = conversationAdapter
+//        }
     }
 }
