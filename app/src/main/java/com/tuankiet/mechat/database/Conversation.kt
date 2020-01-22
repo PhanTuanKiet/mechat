@@ -1,9 +1,10 @@
 package com.tuankiet.mechat.database
 
+import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.Required
 
-data class Conversation(@Required @PrimaryKey var id : Long,
-                        var date : String,
-                        var messages : Array<Message>) : RealmObject()
+open class Conversation(@PrimaryKey var id : Long = 0,
+                        var date : String? = "",
+                        var messages : RealmList<Message>? = null) : RealmObject()

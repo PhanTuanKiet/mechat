@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/top_shape"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
         />
 
 </LinearLayout>

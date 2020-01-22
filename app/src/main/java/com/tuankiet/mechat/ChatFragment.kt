@@ -1,29 +1,40 @@
 package com.tuankiet.mechat
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.tuankiet.mechat.adapter.MainAdapter
 import com.tuankiet.mechat.database.Conversation
 import com.tuankiet.mechat.database.Message
 import com.tuankiet.mechat.database.MessageContent
-import io.realm.Realm
 import io.realm.RealmList
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_message_layout.*
 
-class MainActivity : AppCompatActivity() {
+class ChatFragment : Fragment() {
 
-    lateinit var realm : Realm
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    }
 
-        realm = Realm.getDefaultInstance()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.main_message_layout, container, false)
+    }
 
-        val fragment = ChatFragment()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState);
 
-        val ft = supportFragmentManager.beginTransaction()
-        ft.add(fragmentContainer.id, fragment, "user")
-        ft.commit()
+        var  mainAdapter  = MainAdapter(dummiesData())
+        rvConversations.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = mainAdapter
+        }
     }
 
     fun dummiesData() : ArrayList<Conversation>{

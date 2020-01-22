@@ -1,15 +1,19 @@
 package com.tuankiet.mechat.adapter
 
-import androidx.recyclerview.widget.RecyclerView
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tuankiet.mechat.R
 import com.tuankiet.mechat.database.Conversation
 import kotlinx.android.synthetic.main.main_message_layout.view.*
 
 
 class MainAdapter (val itemList: ArrayList<Conversation>): BaseAdapter() {
+
 
     override fun createViewHolderInstance(viewGroup: ViewGroup, viewType: Int): BaseViewHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.main_message_layout, viewGroup,false)
@@ -20,19 +24,22 @@ class MainAdapter (val itemList: ArrayList<Conversation>): BaseAdapter() {
        return itemList.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, p1: Int) {
-        return holder.bindItems(itemList[p1])
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        return holder.onBindData(itemList[position])
+
     }
 
     class ItemListViewHolder(itemView: View): BaseViewHolder(itemView) {
         override fun onBindData(item: Any) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            val conversation = item as Conversation
+            itemView.tvDatetime.text = conversation.date
+            val conversationAdapter = ConversationAdapter(conversation.messages!!)
+            val childLayoutManager = LinearLayoutManager(itemView.context, RecyclerView.VERTICAL,
+                false)
+            itemView.rvConversations.apply {
+                layoutManager = childLayoutManager
+                adapter = conversationAdapter
+            }
         }
-
-//        fun bindItems(item : Conversation){
-//            itemView.tvDatetime.text = item.date
-//            val conversationAdapter = ConversationAdapter(item.messages)
-//            itemView.rvConversations.adapter = conversationAdapter
-//        }
     }
 }

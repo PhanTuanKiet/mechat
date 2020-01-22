@@ -3,31 +3,38 @@ package com.tuankiet.mechat.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tuankiet.mechat.R
 import com.tuankiet.mechat.database.Message
-import kotlinx.android.synthetic.main.chat_item.view.*
+import io.realm.RealmList
 import kotlinx.android.synthetic.main.conversation_layout.view.*
 
-class ConversationAdapter (var itemList : Array<Message>) : RecyclerView.Adapter<ConversationAdapter.ItemListViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemListViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.chat_item, parent, false)
-        return ItemListViewHolder(v)
+class ConversationAdapter (var itemList : RealmList<Message>) : BaseAdapter(){
+
+    override fun createViewHolderInstance(viewGroup: ViewGroup, viewType: Int): BaseViewHolder {
+        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.conversation_layout, viewGroup,false)
+        return ItemListViewHolder(v)    }
+
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        return holder.onBindData(itemList[position]!!)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return itemList.size
     }
 
-    override fun onBindViewHolder(holder: ItemListViewHolder, position: Int) {
-        return holder.bindItems(itemList[position])
-    }
-
-    class ItemListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-
-        fun bindItems(item : Message) {
-            //set avatar
-
+    class ItemListViewHolder(itemView: View): BaseViewHolder(itemView) {
+        override fun onBindData(item: Any) {
+            val messageItem = item as Message
+            val messageAdapter = MessageAdapter(messageItem.messages!![adapterPosition]!!.content!!)
+            val childLayoutManager = LinearLayoutManager(itemView.context, RecyclerView.VERTICAL,
+                false)
+            itemView.rvMessages.apply {
+                layoutManager = childLayoutManager
+                adapter = messageAdapter
+            }
         }
     }
 }

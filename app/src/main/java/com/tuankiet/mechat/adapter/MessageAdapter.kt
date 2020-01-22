@@ -3,32 +3,28 @@ package com.tuankiet.mechat.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.tuankiet.mechat.R
-import com.tuankiet.mechat.database.Message
-import com.tuankiet.mechat.database.MessageContent
+import io.realm.RealmList
+import kotlinx.android.synthetic.main.message_item.view.*
 
-class MessageAdapter (var itemList : Array<MessageContent>) :
-    RecyclerView.Adapter<MessageAdapter.ItemListViewHolder>() {
-
-    override fun onBindViewHolder(holder: MessageAdapter.ItemListViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemListViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.chat_item, parent, false)
+class MessageAdapter(var itemList: RealmList<String>) : BaseAdapter() {
+    override fun createViewHolderInstance(viewGroup: ViewGroup, viewType: Int): BaseViewHolder {
+        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.message_item, viewGroup,false)
         return ItemListViewHolder(v)
     }
 
-    override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        return holder.onBindData(itemList[position]!!)
     }
 
-    class ItemListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    override fun getItemCount(): Int {
+        return itemList.size
+    }
 
-        fun bindItems(item : MessageContent) {
-
-
+    class ItemListViewHolder(itemView: View): BaseViewHolder(itemView) {
+        override fun onBindData(item: Any) {
+            val messageContent = item as String
+            itemView.tvContent.text = messageContent
         }
     }
 }
