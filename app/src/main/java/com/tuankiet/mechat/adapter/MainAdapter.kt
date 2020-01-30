@@ -37,7 +37,7 @@ class MainAdapter (val itemList: ArrayList<Conversation>): BaseAdapter() {
             val childLayoutManager = LinearLayoutManager(itemView.context, RecyclerView.VERTICAL,
                 false)
             itemView.rvConversations.apply {
-                layoutManager = childLayoutManager
+                layoutManager = getChildLayoutManager(itemView.context)
                 adapter = conversationAdapter
             }
         }

@@ -2,6 +2,9 @@ package com.tuankiet.mechat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.ActionBar.DISPLAY_SHOW_CUSTOM
+import androidx.appcompat.widget.Toolbar
 import com.tuankiet.mechat.database.Conversation
 import com.tuankiet.mechat.database.Message
 import com.tuankiet.mechat.database.MessageContent
@@ -26,22 +29,4 @@ class MainActivity : AppCompatActivity() {
         ft.commit()
     }
 
-    fun dummiesData() : ArrayList<Conversation>{
-        var conList = ArrayList<Conversation>()
-
-        var messageContent1 = RealmList<MessageContent>()
-        messageContent1.add(MessageContent(0, RealmList("aaa","ddd","fsfs"), 3))
-        messageContent1.add(MessageContent(1, RealmList("ddd","gbf","uutt","fsfs"), 4))
-
-        var messageContent2 = RealmList<MessageContent>()
-        messageContent2.add(MessageContent(2, RealmList("rrrr","ddd"), 2))
-        messageContent2.add(MessageContent(3, RealmList("oppp","uutt","fsfs"), 3))
-
-        var message1 = Message(0,"Me","", messageContent1)
-        var message2 = Message(1,"Soooozz","", messageContent2)
-
-        conList.add(Conversation(0,"21/01/2020", RealmList(message1, message2)))
-
-        return conList
-    }
 }

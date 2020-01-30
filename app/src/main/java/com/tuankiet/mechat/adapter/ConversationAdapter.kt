@@ -28,12 +28,13 @@ class ConversationAdapter (var itemList : RealmList<Message>) : BaseAdapter(){
     class ItemListViewHolder(itemView: View): BaseViewHolder(itemView) {
         override fun onBindData(item: Any) {
             val messageItem = item as Message
-            val messageAdapter = MessageAdapter(messageItem.messages!![adapterPosition]!!.content!!)
-            val childLayoutManager = LinearLayoutManager(itemView.context, RecyclerView.VERTICAL,
-                false)
-            itemView.rvMessages.apply {
-                layoutManager = childLayoutManager
-                adapter = messageAdapter
+            lateinit var messageAdapter : MessageAdapter
+            (messageItem.messages)!!.forEach {
+                messageAdapter = MessageAdapter(it.content!!)
+                itemView.rvMessages.apply {
+                    layoutManager = getChildLayoutManager(itemView.context)
+                    adapter = messageAdapter
+                }
             }
         }
     }

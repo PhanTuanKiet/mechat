@@ -11,6 +11,7 @@ import com.tuankiet.mechat.database.Conversation
 import com.tuankiet.mechat.database.Message
 import com.tuankiet.mechat.database.MessageContent
 import io.realm.RealmList
+import kotlinx.android.synthetic.main.main_chat_view.*
 import kotlinx.android.synthetic.main.main_message_layout.*
 
 class ChatFragment : Fragment() {
@@ -24,14 +25,14 @@ class ChatFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.main_message_layout, container, false)
+        return inflater.inflate(R.layout.main_chat_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState);
 
         var  mainAdapter  = MainAdapter(dummiesData())
-        rvConversations.apply {
+        rvMainContent.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = mainAdapter
         }
@@ -41,12 +42,10 @@ class ChatFragment : Fragment() {
         var conList = ArrayList<Conversation>()
 
         var messageContent1 = RealmList<MessageContent>()
-        messageContent1.add(MessageContent(0, RealmList("aaa","ddd","fsfs"), 3))
-        messageContent1.add(MessageContent(1, RealmList("ddd","gbf","uutt","fsfs"), 4))
+        messageContent1.add(MessageContent(1, RealmList("hi f w d r, f ww y u y lmao","gbf","uutt","fsfs"), 4))
 
         var messageContent2 = RealmList<MessageContent>()
-        messageContent2.add(MessageContent(2, RealmList("rrrr","ddd"), 2))
-        messageContent2.add(MessageContent(3, RealmList("oppp","uutt","fsfs"), 3))
+        messageContent2.add(MessageContent(2, RealmList("rrdddrr"), 2))
 
         var message1 = Message(0,"Me","", messageContent1)
         var message2 = Message(1,"Soooozz","", messageContent2)
