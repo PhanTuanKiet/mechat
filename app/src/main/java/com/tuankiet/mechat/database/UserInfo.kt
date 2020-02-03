@@ -4,8 +4,8 @@ import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
-data class UserInfo(
+open class UserInfo(
     @PrimaryKey var id : Long = 0,
-    var name : String? = "",
-    var avatar : String = ""
+    var name : String = "",
+    var avatar : String? = ""
 ) : RealmObject()
