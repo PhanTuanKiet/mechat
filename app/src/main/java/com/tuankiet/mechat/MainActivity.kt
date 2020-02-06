@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         val ft = supportFragmentManager.beginTransaction()
         ft.add(fragmentContainer.id, fragment, "user")
         ft.commit()
-
-        val view : ViewPager = ViewPager(this)
     }
 
 }

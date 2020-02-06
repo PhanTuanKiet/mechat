@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="custom_message_item">
         <attr name="itemColor" format="reference" />
-
+        <attr name="isMySide" format="boolean"  />
+        <attr name="background" format="reference" />
     </declare-styleable>
 </resources>
