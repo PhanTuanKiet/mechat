@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tuankiet.mechat.adapter.MainAdapter
+import com.tuankiet.mechat.database.ContentData
 import com.tuankiet.mechat.database.ConversationItem
 import com.tuankiet.mechat.database.Message
-import com.tuankiet.mechat.database.MessageContent
 import io.realm.RealmList
 import kotlinx.android.synthetic.main.main_chat_view.*
 
@@ -40,14 +40,18 @@ class ChatFragment : Fragment() {
     fun dummiesData() : ArrayList<ConversationItem>{
         var conList = ArrayList<ConversationItem>()
 
-        var messageContent1 = RealmList<MessageContent>()
-        messageContent1.add(MessageContent(1, RealmList("hi f w d r, f ww y u y lmo","gbf","uutt","fsfs"), 4))
+        var messageContent1 = RealmList<String>()
+        messageContent1.add(0, "ss f")
+        messageContent1.add(1, "ajkh s")
 
-        var messageContent2 = RealmList<MessageContent>()
-        messageContent2.add(MessageContent(2, RealmList("rrdddrr"), 2))
+        var messageContent2 = RealmList<String>()
+        messageContent2.add(0, "fff")
+        messageContent2.add(1, "dd fr")
+        messageContent2.add(2, "dd f")
 
-        var message1 = Message(0,0, messageContent1)
-        var message2 = Message(1,1, messageContent2)
+
+        var message1 = Message(0,1, messageContent1)
+        var message2 = Message(1,0, messageContent2)
 
         conList.add(ConversationItem(0,"21/01/2020", RealmList(message1, message2)))
 

@@ -7,4 +7,4 @@ import io.realm.annotations.Required
 
 open class Message (@PrimaryKey var id : Long = 0,
                     var userId : Long = 0,
-                    var messages : RealmList<MessageContent>? = null) : RealmObject()
+                    var messages : RealmList<String>? = null) : RealmObject()

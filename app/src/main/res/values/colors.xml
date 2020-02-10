@@ -5,4 +5,6 @@
     <color name="colorAccent">#527492</color>
     <color name="main_color">#2771AB</color>
     <color name="main_color_dark">#0B426D</color>
+    <color name="chat_bubble_blue">#1B57B6</color>
+    <color name="chat_bubble_gray">#D3DDE0</color>
 </resources>

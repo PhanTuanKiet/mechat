@@ -40,8 +40,13 @@ class ChatBubble : ViewGroup {
 
     }
 
+    fun flip (isFlip : Boolean){
+        if(isFlip)
+            textView.rotationY = 180f
+    }
+
     override fun onLayout(p0: Boolean, p1: Int, p2: Int, p3: Int, p4: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 

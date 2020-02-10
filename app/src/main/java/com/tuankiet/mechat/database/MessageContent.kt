@@ -8,6 +8,5 @@ import io.realm.annotations.Required
 open class MessageContent(
     @PrimaryKey
     var id : Long = 0,
-    var content : RealmList<String>? = null,
-    var amount: Int = 0
+    var content : RealmList<ContentData>? = null
 ) : RealmObject()

@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tuankiet.mechat.R
+import com.tuankiet.mechat.database.ContentData
 import com.tuankiet.mechat.database.Message
 import io.realm.RealmList
 import kotlinx.android.synthetic.main.conversation_layout.view.*
@@ -28,13 +29,19 @@ class ConversationAdapter (var itemList : RealmList<Message>) : BaseAdapter(){
     class ItemListViewHolder(itemView: View): BaseViewHolder(itemView) {
         override fun onBindData(item: Any) {
             val messageItem = item as Message
+            val userId = messageItem.userId
+            if(userId == 0L)
+                itemView.rotationY = 180f
             lateinit var messageAdapter : MessageAdapter
+            var contentList : RealmList<ContentData> = RealmList()
             (messageItem.messages)!!.forEach {
-                messageAdapter = MessageAdapter(it.content!!)
-                itemView.rvMessages.apply {
-                    layoutManager = getChildLayoutManager(itemView.context)
-                    adapter = messageAdapter
-                }
+                val contentData = ContentData(userId, it)
+                contentList!!.add(contentData)
+            }
+            itemView.rvMessages.apply {
+                messageAdapter = MessageAdapter(contentList)
+                layoutManager = getChildLayoutManager(itemView.context)
+                adapter = messageAdapter
             }
         }
     }

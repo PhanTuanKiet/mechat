@@ -2,9 +2,13 @@
 <shape
     android:shape="rectangle"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#464444" />
     <corners
         android:bottomLeftRadius="@dimen/chat_item_radius"
         android:bottomRightRadius="@dimen/chat_item_radius"
+        android:topLeftRadius="@dimen/chat_item_radius"
         android:topRightRadius="@dimen/chat_item_radius"
         />
+    <size android:height="50dp"
+        android:width="150dp" />
 </shape>
