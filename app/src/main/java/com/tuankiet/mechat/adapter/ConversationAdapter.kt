@@ -30,16 +30,17 @@ class ConversationAdapter (var itemList : RealmList<Message>) : BaseAdapter(){
         override fun onBindData(item: Any) {
             val messageItem = item as Message
             val userId = messageItem.userId
+
             if(userId == 0L)
                 itemView.rotationY = 180f
-            lateinit var messageAdapter : MessageAdapter
+
             var contentList : RealmList<ContentData> = RealmList()
             (messageItem.messages)!!.forEach {
                 val contentData = ContentData(userId, it)
                 contentList!!.add(contentData)
             }
             itemView.rvMessages.apply {
-                messageAdapter = MessageAdapter(contentList)
+                var messageAdapter = MessageAdapter(contentList)
                 layoutManager = getChildLayoutManager(itemView.context)
                 adapter = messageAdapter
             }

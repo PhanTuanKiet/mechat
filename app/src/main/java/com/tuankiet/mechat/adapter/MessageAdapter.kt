@@ -68,6 +68,7 @@ class MessageAdapter(var itemList: RealmList<ContentData>) : BaseAdapter() {
                         resultText = resultText + "\n"
                 }
             }
+            
             return resultText
         }
     }

@@ -32,8 +32,6 @@ class MainAdapter (val itemList: ArrayList<ConversationItem>): BaseAdapter() {
             val conversation = item as ConversationItem
             itemView.tvDatetime.text = conversation.date
             val conversationAdapter = ConversationAdapter(conversation.messages!!)
-            val childLayoutManager = LinearLayoutManager(itemView.context, RecyclerView.VERTICAL,
-                false)
             itemView.rvConversations.apply {
                 layoutManager = getChildLayoutManager(itemView.context)
                 adapter = conversationAdapter

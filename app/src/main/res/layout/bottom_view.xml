@@ -13,17 +13,17 @@
 
     <EditText
         android:layout_weight="1"
+        android:id="@+id/edtMessage"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 
     <ImageView
+        android:id="@+id/ivForward"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="@drawable/next_icon"
         android:backgroundTint="@color/main_color"
         android:layout_gravity="center_vertical"
         />
-
-
 
 </LinearLayout>

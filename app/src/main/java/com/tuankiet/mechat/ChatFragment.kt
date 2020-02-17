@@ -31,6 +31,7 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState);
 
         var  mainAdapter  = MainAdapter(dummiesData())
+
         rvMainContent.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = mainAdapter
