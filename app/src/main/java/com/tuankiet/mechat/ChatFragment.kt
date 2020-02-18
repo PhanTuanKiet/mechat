@@ -36,6 +36,10 @@ class ChatFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity)
             adapter = mainAdapter
         }
+
+        ivForward.setOnClickListener {
+
+        }
     }
 
     fun dummiesData() : ArrayList<ConversationItem>{
