@@ -9,7 +9,6 @@ class MCApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         realmHelper.onCreate(this)
     }
 }

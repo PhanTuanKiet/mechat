@@ -3,6 +3,7 @@ package com.tuankiet.mechat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
+import com.tuankiet.mechat.database.RealmHelper
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.kotlin.delete
@@ -16,9 +17,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        realm = Realm.getDefaultInstance()
+//        val realmHelper = RealmHelper()
+//        realmHelper.deleteCurrentDatabase()
 
-        val fragment = ChatFragment()
+        val fragment = UserFragment()
 
         val ft = supportFragmentManager.beginTransaction()
         ft.add(fragmentContainer.id, fragment, "user")
