@@ -1,4 +1,4 @@
-package com.tuankiet.mechat
+package com.tuankiet.mechat.base
 
 import android.app.Application
 import com.tuankiet.mechat.database.RealmHelper

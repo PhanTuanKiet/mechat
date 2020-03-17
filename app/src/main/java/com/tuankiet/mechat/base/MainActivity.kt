@@ -1,12 +1,10 @@
-package com.tuankiet.mechat
+package com.tuankiet.mechat.base
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
-import com.tuankiet.mechat.database.RealmHelper
+import com.tuankiet.mechat.R
+import com.tuankiet.mechat.UserFragment
 import io.realm.Realm
-import io.realm.RealmConfiguration
-import io.realm.kotlin.delete
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
